@@ -51,3 +51,22 @@ function twoSumHash(nums: number[], target: number): number[] {
   // Return an empty array if no solution is found
   return [];
 }
+
+// Hash Map solution: O(n) time, O(n) space
+function twoSum(nums: number[], target: number): number[] {
+  const map = new Map<number, number>();
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+
+    // Found it: Complement is previously set
+    if (map.has(complement)) {
+      return [map.get(complement)!, i];
+    }
+
+    // Haven't seen this number yet so remember it
+    map.set(nums[i], i);
+  }
+
+  return [];
+}
